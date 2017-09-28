@@ -2,7 +2,7 @@
 A little helper that converts .loo files for Guild 3 localization to xlsx files and back.
 
 ## Usage
-Simply drag the .loo or .xlsx file on the executable, it will create the converted version in the target directory. 
+Simply drag the .loo or .xlsx file on the executable, it will create the converted version in the same directory the source file was found in. 
 It will not overwrite existing files, instead create copies with _1, _2, etc appended.
 
 
