@@ -13,6 +13,8 @@ If you do not own a copy of Microsoft Office you can use Google Sheets ( https:/
 * Import files using File -> Import -> Upload
 * Export files by using File -> Download As -> Microsoft Excel
 
+## Community Translations
+You can find all information about the community translation effort in our steam thread: http://steamcommunity.com/app/311260/discussions/0/1520386297685072772/ 
 
 ## Dependencies
 This project uses https://github.com/ClosedXML/ClosedXML to handle xlsx files.
