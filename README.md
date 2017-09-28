@@ -1,5 +1,5 @@
 # guild-translation-tool
-A little helper that converts .loo files forGuild 3 localization to xlsx files and back.
+A little helper that converts .loo files for Guild 3 localization to xlsx files and back.
 
 ## Usage
 Simply drag the .loo or .xlsx file on the executable, it will create the converted version in the target directory. 
