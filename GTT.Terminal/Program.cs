@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -19,13 +20,14 @@ namespace GTT.Terminal
             try
             {
 
-                if (args.Length <= 0) //If no file was supplied exit.
+                if (args.Length <= 1) //If no file was supplied exit.
                 {
-                    Console.WriteLine("No input file supplied.");
+                    PrintHelp();
                 }
                 else
                 {
                     var file = args[0];
+                    var codePage = int.Parse(args[1]);
                     var looParser = new LooParser();
                     var xlsxParser = new XlsxParser();
                     switch (file)
@@ -33,24 +35,32 @@ namespace GTT.Terminal
                         case var xlsxFile when Path.GetExtension(file)
                             .Equals(XlsxExtension, StringComparison.CurrentCultureIgnoreCase): //if xlsxl file -> convert to loo
                             var xlsxLines = xlsxParser.LoadXlsFile(xlsxFile);
-                            looParser.SaveLooFile(xlsxLines,Path.GetFileNameWithoutExtension(xlsxFile) + LooExtension);
+                            looParser.SaveLooFile(xlsxLines,Path.GetFileNameWithoutExtension(xlsxFile) + LooExtension, codePage);
                             break;
                         case var looFile when Path.GetExtension(file)
                             .Equals(LooExtension, StringComparison.CurrentCultureIgnoreCase): //if loo file -> convert to xlsx 
-                            var looLines = looParser.LoadLooFile(looFile);
+                            var looLines = looParser.LoadLooFile(looFile, codePage);
                             xlsxParser.SaveXlsFile(looLines, Path.GetFileNameWithoutExtension(looFile) + XlsxExtension);
                             break;
                         default:
-                            Console.WriteLine("Invalid input file.");
+                            PrintHelp();
                             break;
                     }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                PrintHelp();
                 throw e;
             }
+        }
+
+        static void PrintHelp()
+        {
+            Console.WriteLine(Path.GetFileName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + " <file> <codepage>");
+            Console.WriteLine("Code Pages: ");
+            Console.WriteLine("\tRussian: 1251");
+            Console.WriteLine("\tEnglish, French, German, Italian, Spanish: 1252");
         }
     }
 }
