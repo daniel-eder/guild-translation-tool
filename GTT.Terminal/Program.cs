@@ -60,6 +60,7 @@ namespace GTT.Terminal
             Console.WriteLine(Path.GetFileName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + " <file> <codepage>");
             Console.WriteLine("Code Pages: ");
             Console.WriteLine("\tRussian: 1251");
+            Console.WriteLine("\tRussian with chinese binary mod: 936");
             Console.WriteLine("\tEnglish, French, German, Italian, Spanish: 1252");
         }
     }
