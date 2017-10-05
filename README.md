@@ -3,12 +3,15 @@ A little helper that converts .loo files for Guild 3 localization to xlsx files 
 
 ## Usage
 
-`GTT.Terminal.exe <filename> <codepage>`
+`GTT.Terminal.exe <filename> <codepage> [formatFile]`
 
 The program will automatically detect if the supplied file is .loo or .xlsx. 
 Make sure to provide the correct code page. In most cases this will be 1252, for Russian translations it is 1251.
+The format file is optional and is used to truncate texts that are too long. An up to date version can always be found in `/Resources` in the repository.
 The tool will create the converted version in the same directory the source file was found in. 
 It will not overwrite existing files, instead create copies with _1, _2, etc appended.
+
+
 
 **IMPORTANT**: Do not modify the column headers in the spreadsheet, nor should you modify the .loo files manually to avoid syntax errors that might lead to problems in parsing with either this tool or the game.
 
