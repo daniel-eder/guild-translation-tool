@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ClosedXML.Excel;
 
 namespace GTT.Common
@@ -36,16 +34,31 @@ namespace GTT.Common
         /// <summary>
         /// Parses an xlsx file into a list of key-text tuples. Parses strictly, all conventions have to be kept.
         /// </summary>
-        /// <param name="file"></param>
+        /// <param name="file">The file.</param>
+        /// <param name="formatFile">The format file.</param>
         /// <returns></returns>
-        public List<Tuple<string, string>> LoadXlsFile(string file)
+        public List<Tuple<string, string>> LoadXlsFile(string file, string formatFile)
         {
             var result = new List<Tuple<string, string>>();
             var workbook = new XLWorkbook(file);
+            var formatWorksheet = formatFile != null ? new XLWorkbook(formatFile).Worksheets.Worksheet(1) : null;
+
             var worksheet = workbook.Worksheets.Worksheet(1);
+
             foreach (var row in worksheet.Rows().Skip(1))
             {
-                result.Add(new Tuple<string, string>(row.Cell(1).Value as string, row.Cell(2).Value as string)); 
+                var key = row.Cell(1).GetValue<string>();
+                var value = row.Cell(2).GetValue<string>();
+
+                var formatKeyCell = formatWorksheet?.Column(1).CellsUsed(cell => cell.GetValue<string>() == key).FirstOrDefault();
+                if (formatKeyCell != null)
+                {
+                    var formatValueCell = formatKeyCell.WorksheetRow().Cell(2);
+                    var maxLength = !string.IsNullOrWhiteSpace(formatValueCell.GetValue<string>()) ? formatValueCell.GetValue<int>() : int.MaxValue;
+                    value = value.Length <= maxLength ? value : value.Substring(0, maxLength);
+                }
+
+                result.Add(new Tuple<string, string>(key, value)); 
             }
             return result;
         }
