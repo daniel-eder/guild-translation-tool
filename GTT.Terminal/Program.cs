@@ -29,7 +29,7 @@ namespace GTT.Terminal
                         case var xlsxFile when Path.GetExtension(file)
                             .Equals(XlsxExtension, StringComparison.CurrentCultureIgnoreCase)
                         : //if xlsxl file -> convert to loo
-                            var xlsxLines = xlsxParser.LoadXlsFile(xlsxFile, args.Length > 1 ? args[2] : null);
+                            var xlsxLines = xlsxParser.LoadXlsFile(xlsxFile, args.Length > 2 ? args[2] : null);
                             looParser.SaveLooFile(xlsxLines, Path.GetFileNameWithoutExtension(xlsxFile) + LooExtension,
                                 codePage);
                             break;
