@@ -55,12 +55,9 @@ namespace GTT.Terminal
         private static void PrintHelp()
         {
             Console.WriteLine(Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName) +
-                              " <file> <codepage> [FormatFile]");
-            Console.WriteLine("Code Pages: ");
-            Console.WriteLine("\tRussian: 1251");
-            Console.WriteLine("\tRussian with chinese binary mod: 936");
-            Console.WriteLine("\tEnglish, French, German, Italian, Spanish: 1252");
-            Console.WriteLine("FormatFile: Optional, an xlsx file containing format information for the tool.");
+                              " <file> [FormatFile]");
+            Console.WriteLine("file - the file to convert");
+            Console.WriteLine("FormatFile - Optional, an xlsx file containing format information for the tool.");
         }
     }
 }
