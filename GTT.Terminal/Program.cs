@@ -30,13 +30,12 @@ namespace GTT.Terminal
                             .Equals(XlsxExtension, StringComparison.CurrentCultureIgnoreCase)
                         : //if xlsxl file -> convert to loo
                             var xlsxLines = xlsxParser.LoadXlsFile(xlsxFile, args.Length > 2 ? args[2] : null);
-                            looParser.SaveLooFile(xlsxLines, Path.GetFileNameWithoutExtension(xlsxFile) + LooExtension,
-                                codePage);
+                            looParser.SaveLooFile(xlsxLines, Path.GetFileNameWithoutExtension(xlsxFile) + LooExtension);
                             break;
                         case var looFile when Path.GetExtension(file)
                             .Equals(LooExtension, StringComparison.CurrentCultureIgnoreCase)
                         : //if loo file -> convert to xlsx 
-                            var looLines = looParser.LoadLooFile(looFile, codePage);
+                            var looLines = looParser.LoadLooFile(looFile);
                             xlsxParser.SaveXlsFile(looLines, Path.GetFileNameWithoutExtension(looFile) + XlsxExtension);
                             break;
                         default:

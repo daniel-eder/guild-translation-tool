@@ -27,7 +27,7 @@ namespace GTT.Common
         /// <param name="lines">The list of lines.</param>
         /// <param name="file">The file to create.</param>
         /// <param name="codePage">The code page for encoding.</param>
-        public void SaveLooFile(List<Tuple<string, string>> lines, string file, int codePage)
+        public void SaveLooFile(List<Tuple<string, string>> lines, string file)
         {
             var looBuilder = new StringBuilder();
 
@@ -49,18 +49,17 @@ namespace GTT.Common
             looBuilder.AppendLine("\t)");
             looBuilder.AppendLine("};");
             file = FileHelper.GetUniqueFile(file).FullName;
-            File.WriteAllText(file, looBuilder.ToString(), Encoding.GetEncoding(codePage));
+            File.WriteAllText(file, looBuilder.ToString(), Encoding.UTF8);
         }
 
         /// <summary>
         /// Parses a .loo file into a list of key-text tuples. Parses strictly, all conventions have to be kept.
         /// </summary>
         /// <param name="file">The file to load.</param>
-        /// <param name="codePage">The code page to use for decoding.</param>
         /// <returns></returns>
-        public List<Tuple<string, string>> LoadLooFile(string file, int codePage)
+        public List<Tuple<string, string>> LoadLooFile(string file)
         {
-            var loolines = File.ReadAllLines(file, Encoding.GetEncoding(codePage));
+            var loolines = File.ReadAllLines(file, Encoding.UTF8);
             var result = new List<Tuple<string, string>>();
             var lastKey = string.Empty;
             foreach (var line in loolines)
