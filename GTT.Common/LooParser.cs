@@ -48,8 +48,8 @@ namespace GTT.Common
 
             looBuilder.AppendLine("\t)");
             looBuilder.AppendLine("};");
-            file = FileHelper.GetUniqueFile(file).FullName;
-            File.WriteAllText(file, looBuilder.ToString(), Encoding.UTF8);
+           // file = FileHelper.GetUniqueFile(file).FullName;
+            File.WriteAllText(file, looBuilder.ToString(), new UTF8Encoding(false));
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace GTT.Common
         /// <returns></returns>
         public List<Tuple<string, string>> LoadLooFile(string file)
         {
-            var loolines = File.ReadAllLines(file, Encoding.UTF8);
+            var loolines = File.ReadAllLines(file, new UTF8Encoding(false));
             var result = new List<Tuple<string, string>>();
             var lastKey = string.Empty;
             foreach (var line in loolines)
