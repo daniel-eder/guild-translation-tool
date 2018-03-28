@@ -37,29 +37,37 @@ namespace GTT.Common
         /// <param name="file">The file.</param>
         /// <param name="formatFile">The format file.</param>
         /// <returns></returns>
-        public List<Tuple<string, string>> LoadXlsFile(string file, string formatFile)
+        public List<Tuple<string, string>> LoadXlsFile(string file, string formatFile, ParserLanguage language)
         {
             var result = new List<Tuple<string, string>>();
-            var workbook = new XLWorkbook(file);
-            var formatWorksheet = formatFile != null ? new XLWorkbook(formatFile).Worksheets.Worksheet(1) : null;
-
-            var worksheet = workbook.Worksheets.Worksheet(1);
-
-            foreach (var row in worksheet.Rows().Skip(1))
+            try
             {
-                var key = row.Cell(1).GetValue<string>();
-                var value = row.Cell(2).GetValue<string>();
+                var workbook = new XLWorkbook(file);
+                var formatWorksheet = formatFile != null ? new XLWorkbook(formatFile).Worksheets.Worksheet(1) : null;
 
-                var formatKeyCell = formatWorksheet?.Column(1).CellsUsed(cell => cell.GetValue<string>() == key).FirstOrDefault();
-                if (formatKeyCell != null)
+                var worksheet = workbook.Worksheets.Worksheet(1);
+
+                foreach (var row in worksheet.Rows().Skip(2)) //Skip license and header
                 {
-                    var formatValueCell = formatKeyCell.WorksheetRow().Cell(2);
-                    var maxLength = !string.IsNullOrWhiteSpace(formatValueCell.GetValue<string>()) ? formatValueCell.GetValue<int>() : int.MaxValue;
-                    value = value.Length <= maxLength ? value : value.Substring(0, maxLength);
-                }
+                    var key = row.Cell(1).GetValue<string>();
+                    var value = row.Cell((int) language).GetValue<string>(); //Go to right language column
 
-                result.Add(new Tuple<string, string>(key, value)); 
+                    var formatKeyCell = formatWorksheet?.Column(1).CellsUsed(cell => cell.GetValue<string>() == key).FirstOrDefault();
+                    if (formatKeyCell != null)
+                    {
+                        var formatValueCell = formatKeyCell.WorksheetRow().Cell(2);
+                        var maxLength = !string.IsNullOrWhiteSpace(formatValueCell.GetValue<string>()) ? formatValueCell.GetValue<int>() : int.MaxValue;
+                        value = value.Length <= maxLength ? value : value.Substring(0, maxLength);
+                    }
+
+                    result.Add(new Tuple<string, string>(key, value)); 
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
             return result;
         }
     }
