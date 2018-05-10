@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTT.Terminal", "GTT.Terminal\GTT.Terminal.csproj", "{A4FD0364-0728-4E9E-928C-7B7FDB9B7B1C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTT.Common", "GTT.Common\GTT.Common.csproj", "{88BAAAB7-207B-490A-B56C-3C6D99C59784}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTT.LocaleConverter", "GTT.LocaleConverter\GTT.LocaleConverter.csproj", "{A474EDEB-C0BA-4937-A50A-B850DE203520}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{88BAAAB7-207B-490A-B56C-3C6D99C59784}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88BAAAB7-207B-490A-B56C-3C6D99C59784}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88BAAAB7-207B-490A-B56C-3C6D99C59784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A474EDEB-C0BA-4937-A50A-B850DE203520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A474EDEB-C0BA-4937-A50A-B850DE203520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A474EDEB-C0BA-4937-A50A-B850DE203520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A474EDEB-C0BA-4937-A50A-B850DE203520}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E7445DC-8C4A-4BEF-A3C2-06334439CB93}
 	EndGlobalSection
 EndGlobal
