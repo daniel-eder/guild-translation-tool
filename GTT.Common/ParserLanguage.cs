@@ -9,6 +9,7 @@
         Spanish = 6,
         Dutch = 7,
         Korean = 8,
-        Japanese = 9
+        Japanese = 9,
+        Chinese = 10,
     }
 }
