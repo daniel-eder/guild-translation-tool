@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTT.Common", "GTT.Common\GT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTT.LocaleConverter", "GTT.LocaleConverter\GTT.LocaleConverter.csproj", "{A474EDEB-C0BA-4937-A50A-B850DE203520}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTT.ImportLoo", "GTT.ImportLoo\GTT.ImportLoo.csproj", "{9A7E8536-4AB6-4DC9-B942-277BA4A002D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A474EDEB-C0BA-4937-A50A-B850DE203520}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A474EDEB-C0BA-4937-A50A-B850DE203520}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A474EDEB-C0BA-4937-A50A-B850DE203520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A7E8536-4AB6-4DC9-B942-277BA4A002D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A7E8536-4AB6-4DC9-B942-277BA4A002D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A7E8536-4AB6-4DC9-B942-277BA4A002D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A7E8536-4AB6-4DC9-B942-277BA4A002D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
