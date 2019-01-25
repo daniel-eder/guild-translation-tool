@@ -46,7 +46,7 @@ namespace GTT.Common
 
             }
 
-            looBuilder.AppendLine("\t)");
+            looBuilder.AppendLine("\t);");
             looBuilder.AppendLine("};");
            // file = FileHelper.GetUniqueFile(file).FullName;
             File.WriteAllText(file, looBuilder.ToString(), new UTF8Encoding(false));
