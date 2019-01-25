@@ -11,5 +11,6 @@
         Korean = 8,
         Japanese = 9,
         Chinese = 10,
+        Portuguese = 11,
     }
 }
