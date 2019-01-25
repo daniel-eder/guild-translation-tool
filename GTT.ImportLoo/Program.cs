@@ -23,7 +23,7 @@ namespace GTT.ImportLoo
             {
                //Load XLS FIl 
                //Load Loo File 
-               //for each loo key, insert isert text into xls if key exists too
+               //for each loo key, insert insert text into xls if key exists too
                
                var looParser = new LooParser();
                var workbook = new XLWorkbook(options.SheetFile);
